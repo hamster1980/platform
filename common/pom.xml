@@ -3,16 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.hamster</groupId>
-		<artifactId>platform-parent</artifactId>
+		<artifactId>platform</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>platform-common</artifactId>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
-	</dependencies>
-	
 </project>
