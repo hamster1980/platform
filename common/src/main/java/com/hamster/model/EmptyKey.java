@@ -6,6 +6,8 @@ public class EmptyKey implements Key {
 
 	private static final long serialVersionUID = 1L;
 
+	public static final EmptyKey DEFAULT = new EmptyKey();
+	
 	@Override
     public int hashCode() {
         return 1;

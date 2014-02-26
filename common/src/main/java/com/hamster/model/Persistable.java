@@ -2,8 +2,8 @@ package com.hamster.model;
 
 import java.io.Serializable;
 
-public interface Entity extends Serializable {
+public interface Persistable extends Serializable {
 
-		Key getKey();
+	Key getKey();
 	
 }
