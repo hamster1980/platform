@@ -1,6 +1,10 @@
 package com.hamster.model;
 
-public interface Stateable extends Persistable {
+import java.io.Serializable;
+
+import org.springframework.data.domain.Persistable;
+
+public interface Stateable<ID extends Serializable> extends Persistable<ID> {
 
 	State getState();
 	

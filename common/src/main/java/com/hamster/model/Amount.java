@@ -4,23 +4,37 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
+import java.util.Locale;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 
+@Embeddable
 public class Amount implements Serializable, Comparable<Amount> {
 
 	private static final long serialVersionUID = 1L;
 
 	private static final int FRACTION_MAXLENGTH = 2;
 
+	@Column(name="AMOUNT_VALUE")
     private final BigDecimal calculationValue;
+	@Transient
     private final BigDecimal userValue;
+	@Column(name="AMOUNT_CURRENCY")
     private final Currency currency;
+    @Transient
     private long[] values;
 
+    public Amount() {
+    	this(BigDecimal.ZERO, Currency.getInstance(Locale.getDefault()));
+    }
+    
     public Amount(final BigDecimal value, Currency currency) {
         Preconditions.checkNotNull(value);
         this.userValue = value.setScale(2, RoundingMode.HALF_EVEN);

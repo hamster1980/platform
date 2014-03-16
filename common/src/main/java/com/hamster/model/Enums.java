@@ -1,5 +1,6 @@
 package com.hamster.model;
 
+import java.io.Serializable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -7,19 +8,19 @@ import com.google.common.base.Optional;
 
 public class Enums {
 
-    private static ConcurrentMap<Enum<?>, Key> keys = new ConcurrentHashMap<>();
+    private static ConcurrentMap<Enum<?>, Serializable> keys = new ConcurrentHashMap<>();
     
     private Enums(){
     }
     
-    public static Key getKey(Enum<?> value){
+    public static Serializable getKey(Enum<?> value){
         if(value == null){
             return null;
         }
-        Key key = keys.get(value);
+        Serializable key = keys.get(value);
         if(key == null){
             //todo: use class name too
-            keys.putIfAbsent(value, new StringKey(value.name()));
+            keys.putIfAbsent(value, value.name());
             key = keys.get(value);
         }
         return key;
