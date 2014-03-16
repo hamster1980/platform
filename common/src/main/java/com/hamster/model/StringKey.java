@@ -1,14 +1,27 @@
 package com.hamster.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 
+@Embeddable
 public class StringKey implements Key, Comparable<StringKey> {
 
 	private static final long serialVersionUID = 1L;
 	
+	public static StringKey EMPTY_KEY = new StringKey();
+	
+	@Column(name="ID")
 	private final String value;
 
+	public StringKey() {
+		this(StringUtils.EMPTY);
+	}
+	
 	public StringKey(String value) {
 		this.value = Preconditions.checkNotNull(value);
 	}
