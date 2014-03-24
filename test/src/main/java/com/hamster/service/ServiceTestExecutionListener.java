@@ -1,4 +1,4 @@
-package com.hamster.test.annotation;
+package com.hamster.service;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dbunit.IDatabaseTester;
@@ -11,9 +11,6 @@ import org.springframework.test.context.TestExecutionListener;
 
 public class ServiceTestExecutionListener implements TestExecutionListener {
 
-	public static final String DATABASE_TESTER_BEAN = "databaseTester";
-	public static final String XLS_DATA_FILE_LOADER_BEAN = "xlsDataFileLoader";
-	
 	private IDataSet typeDataSet;
 	private IDatabaseTester databaseTester;
 	
@@ -43,7 +40,7 @@ public class ServiceTestExecutionListener implements TestExecutionListener {
 		if(dataSet == null) {
 			return;
 		}
-		databaseTester = testContext.getApplicationContext().getBean(DATABASE_TESTER_BEAN, IDatabaseTester.class);
+		databaseTester = testContext.getApplicationContext().getBean(AServiceTestConfig.DATABASE_TESTER_BEAN, IDatabaseTester.class);
 		databaseTester.setDataSet(dataSet);
 		databaseTester.onSetup();
 	}
@@ -64,7 +61,7 @@ public class ServiceTestExecutionListener implements TestExecutionListener {
 	}
 
 	private IDataSet load(TestContext testContext, DataSets dataSets) {
-		XlsDataFileLoader loader = testContext.getApplicationContext().getBean(XLS_DATA_FILE_LOADER_BEAN, XlsDataFileLoader.class);
+		XlsDataFileLoader loader = testContext.getApplicationContext().getBean(AServiceTestConfig.XLS_DATA_FILE_LOADER_BEAN, XlsDataFileLoader.class);
 		return loader.load(dataSets.setUpDataSet());
 		
 	}
