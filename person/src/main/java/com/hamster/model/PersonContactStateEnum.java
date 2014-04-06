@@ -3,19 +3,16 @@ package com.hamster.model;
 import java.io.Serializable;
 
 public enum PersonContactStateEnum implements State {
-	WAITED,
-	CONFIRMED,
-	REMOVED
-	;
+    WAITED, CONFIRMED, REMOVED;
 
-	@Override
-	public Serializable getId() {
-		return Enums.getKey(this);
-	}
+    @Override
+    public Serializable getId() {
+        return Enums.getKey(this);
+    }
 
-	@Override
-	public boolean isNew() {
-		return false;
-	}
+    @Override
+    public boolean isNew() {
+        return false;
+    }
 
 }

@@ -8,76 +8,76 @@ import com.hamster.Typeable;
 
 public class PersonContact implements Stateable, Typeable, Persistable<Long> {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private final long key;
-	private Integer personKey;
-	private Type type;
-	private State state;
-	private String value;
-	private boolean main;
-	
-	public PersonContact() {
-		this(0);
-	}
-	
-	public PersonContact(long key) {
-		this.key = key;
-	}
+    private final long key;
+    private Integer personKey;
+    private Type type;
+    private State state;
+    private String value;
+    private boolean main;
 
-	@Override
-	public Long getId() {
-		return key;
-	}
+    public PersonContact() {
+        this(0);
+    }
 
-	@Override
-	public boolean isNew() {
-		return key == 0;
-	}
+    public PersonContact(long key) {
+        this.key = key;
+    }
 
-	public Integer getPersonKey() {
-		return personKey;
-	}
+    @Override
+    public Long getId() {
+        return key;
+    }
 
-	public void setPersonKey(Integer personKey) {
-		this.personKey = personKey;
-	}
+    @Override
+    public boolean isNew() {
+        return key == 0;
+    }
 
-	@Override
-	public Type getType() {
-		return type;
-	}
+    public Integer getPersonKey() {
+        return personKey;
+    }
 
-	public void setType(Type type) {
-		this.type = type;
-	}
+    public void setPersonKey(Integer personKey) {
+        this.personKey = personKey;
+    }
 
-	@Override
-	public State getState() {
-		return state;
-	}
+    @Override
+    public Type getType() {
+        return type;
+    }
 
-	public void setState(State state) {
-		this.state = state;
-	}
+    public void setType(Type type) {
+        this.type = type;
+    }
 
-	public String getValue() {
-		return value;
-	}
+    @Override
+    public State getState() {
+        return state;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public void setState(State state) {
+        this.state = state;
+    }
 
-	public boolean isMain() {
-		return main;
-	}
+    public String getValue() {
+        return value;
+    }
 
-	public void setMain(boolean main) {
-		this.main = main;
-	}
+    public void setValue(String value) {
+        this.value = value;
+    }
 
-	@Override
+    public boolean isMain() {
+        return main;
+    }
+
+    public void setMain(boolean main) {
+        this.main = main;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hashCode(key);
     }
@@ -85,19 +85,15 @@ public class PersonContact implements Stateable, Typeable, Persistable<Long> {
     @Override
     public boolean equals(Object obj) {
         return obj instanceof PersonContact
-                && Objects.equal(((PersonContact)obj).key, key);
+                && Objects.equal(((PersonContact) obj).key, key);
     }
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this)
-        			.add("key", key)
-        			.add("personKey", personKey)
-        			.add("type", type)
-        			.add("state", state)
-        			.add("value", value)
-        			.add("main", main)
-        				.toString();
+        return Objects.toStringHelper(this).add("key", key)
+                .add("personKey", personKey).add("type", type)
+                .add("state", state).add("value", value).add("main", main)
+                .toString();
     }
 
 }

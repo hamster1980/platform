@@ -3,18 +3,16 @@ package com.hamster.model;
 import java.io.Serializable;
 
 public enum PersonContactTypeEnum implements Type {
-	EMAIL,
-	PHONE,
-	;
+    EMAIL, PHONE, ;
 
-	@Override
-	public Serializable getId() {
-		return Enums.getKey(this);
-	}
+    @Override
+    public Serializable getId() {
+        return Enums.getKey(this);
+    }
 
-	@Override
-	public boolean isNew() {
-		return false;
-	}
-	
+    @Override
+    public boolean isNew() {
+        return false;
+    }
+
 }

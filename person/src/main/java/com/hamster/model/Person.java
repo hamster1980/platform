@@ -12,94 +12,90 @@ import org.springframework.data.domain.Persistable;
 import com.google.common.base.Objects;
 
 @Entity
-@Table(name="PERSON")
+@Table(name = "PERSON")
 public class Person implements Persistable<Long> {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="ID")
-	private final long key;
-	@Column(name="FIRST_NAME")
-	private String firstName;
-	@Column(name="SECOND_NAME")
-	private String secondName;
-	@Column(name="LAST_NAME")
-	private String lastName;
-	@Enumerated(EnumType.STRING)
-	@Column(name="CONTACT_TYPE_ID")
-	private PersonContactTypeEnum mainContactType;
-	
-	public Person() {
-		this(0);
-	}
-	
-	public Person(long key) {
-		this.key = key;
-	}
+    @Id
+    @Column(name = "ID")
+    private final long key;
+    @Column(name = "FIRST_NAME")
+    private String firstName;
+    @Column(name = "SECOND_NAME")
+    private String secondName;
+    @Column(name = "LAST_NAME")
+    private String lastName;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "CONTACT_TYPE_ID")
+    private PersonContactTypeEnum mainContactType;
 
-	@Override
-	public Long getId() {
-		return key;
-	}
+    public Person() {
+        this(0);
+    }
 
-	@Override
-	public boolean isNew() {
-		return key == 0;
-	}
+    public Person(long key) {
+        this.key = key;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    @Override
+    public Long getId() {
+        return key;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    @Override
+    public boolean isNew() {
+        return key == 0;
+    }
 
-	public String getSecondName() {
-		return secondName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setSecondName(String secondName) {
-		this.secondName = secondName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getSecondName() {
+        return secondName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
 
-	public Type getMainContactType() {
-		return mainContactType;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setMainContactType(PersonContactTypeEnum mainContactType) {
-		this.mainContactType = mainContactType;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	@Override
+    public Type getMainContactType() {
+        return mainContactType;
+    }
+
+    public void setMainContactType(PersonContactTypeEnum mainContactType) {
+        this.mainContactType = mainContactType;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hashCode(key);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return obj instanceof Person
-                && Objects.equal(((Person)obj).key, key);
+        return obj instanceof Person && Objects.equal(((Person) obj).key, key);
     }
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this)
-        			.add("key", key)
-        			.add("firstName", firstName)
-        			.add("secondName", secondName)
-        			.add("lastName", lastName)
-        			.add("mainContactType", mainContactType)
-        				.toString();
+        return Objects.toStringHelper(this).add("key", key)
+                .add("firstName", firstName).add("secondName", secondName)
+                .add("lastName", lastName)
+                .add("mainContactType", mainContactType).toString();
     }
 
 }
