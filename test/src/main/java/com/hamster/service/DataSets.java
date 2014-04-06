@@ -8,9 +8,9 @@ import java.lang.annotation.Target;
 import org.apache.commons.lang3.StringUtils;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD ,ElementType.TYPE})
+@Target({ ElementType.METHOD, ElementType.TYPE })
 public @interface DataSets {
 
-	String setUpDataSet() default StringUtils.EMPTY;
-	
+    String setUpDataSet() default StringUtils.EMPTY;
+
 }

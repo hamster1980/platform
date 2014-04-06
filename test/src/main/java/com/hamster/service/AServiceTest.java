@@ -10,11 +10,12 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestExecutionListeners({ServiceTestExecutionListener.class})
+@TestExecutionListeners({ ServiceTestExecutionListener.class })
 @ActiveProfiles("test")
-public abstract class AServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
+public abstract class AServiceTest extends
+        AbstractTransactionalJUnit4SpringContextTests {
 
-	@PersistenceContext
-	protected EntityManager emf;
+    @PersistenceContext
+    protected EntityManager emf;
 
 }
