@@ -18,23 +18,23 @@ import com.google.common.base.Preconditions;
 @Embeddable
 public class Amount implements Serializable, Comparable<Amount> {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private static final int FRACTION_MAXLENGTH = 2;
+    private static final int FRACTION_MAXLENGTH = 2;
 
-	@Column(name="AMOUNT_VALUE")
+    @Column(name = "AMOUNT_VALUE")
     private final BigDecimal calculationValue;
-	@Transient
+    @Transient
     private final BigDecimal userValue;
-	@Column(name="AMOUNT_CURRENCY")
+    @Column(name = "AMOUNT_CURRENCY")
     private final Currency currency;
     @Transient
     private long[] values;
 
     public Amount() {
-    	this(BigDecimal.ZERO, Currency.getInstance(Locale.getDefault()));
+        this(BigDecimal.ZERO, Currency.getInstance(Locale.getDefault()));
     }
-    
+
     public Amount(final BigDecimal value, Currency currency) {
         Preconditions.checkNotNull(value);
         this.userValue = value.setScale(2, RoundingMode.HALF_EVEN);
@@ -95,10 +95,8 @@ public class Amount implements Serializable, Comparable<Amount> {
 
     private long[] split(BigDecimal value) {
         BigDecimal integer = new BigDecimal((long) value.doubleValue());
-        return new long[] { 
-                integer.longValue(),
-                value.add(integer.negate()).movePointRight(2).longValue(), 
-        };
+        return new long[] { integer.longValue(),
+                value.add(integer.negate()).movePointRight(2).longValue(), };
     }
 
     public int compareTo(Amount o) {
@@ -106,7 +104,8 @@ public class Amount implements Serializable, Comparable<Amount> {
             return 1;
         }
         if (!currency.equals(o.getCurrency())) {
-            throw new IllegalArgumentException("It's impossible to compare amounts with different currencies.");
+            throw new IllegalArgumentException(
+                    "It's impossible to compare amounts with different currencies.");
         }
         return userValue.compareTo(o.getUserValue());
     }
@@ -128,11 +127,8 @@ public class Amount implements Serializable, Comparable<Amount> {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this)
-                        .addValue(userValue)
-                        .addValue(calculationValue)
-                        .addValue(currency)
-                            .toString();
+        return Objects.toStringHelper(this).addValue(userValue)
+                .addValue(calculationValue).addValue(currency).toString();
     }
 
     public static boolean isEmpty(Amount amount) {
@@ -163,10 +159,11 @@ public class Amount implements Serializable, Comparable<Amount> {
                 currency);
     }
 
-    public static Amount create(String integer, String fraction, Currency currency) {
+    public static Amount create(String integer, String fraction,
+            Currency currency) {
         return create(Objects.firstNonNull(integer, "0") + "."
-                        + getFormattedFraction(Objects.firstNonNull(fraction, "0")),
-                        currency);
+                + getFormattedFraction(Objects.firstNonNull(fraction, "0")),
+                currency);
     }
 
     public static Amount create(String value, Currency currency) {
@@ -197,22 +194,26 @@ public class Amount implements Serializable, Comparable<Amount> {
             return copy(a1, create);
         }
         if (!a1.getCurrency().equals(a2.getCurrency())) {
-            throw new IllegalArgumentException("This operation doesn't support different currencies");
+            throw new IllegalArgumentException(
+                    "This operation doesn't support different currencies");
         }
         return new Amount(a1.getValue().add(a2.getValue()), a1.getCurrency());
     }
 
     public static Amount reduce(Amount a1, Amount a2) {
         if (a1 == null) {
-            throw new IllegalArgumentException("It's impossible to make reducing when first argument is null");
+            throw new IllegalArgumentException(
+                    "It's impossible to make reducing when first argument is null");
         }
         if (a2 == null) {
             return copy(a1);
         }
         if (!a1.getCurrency().equals(a2.getCurrency())) {
-            throw new IllegalArgumentException("This operation doesn't support different currencies");
+            throw new IllegalArgumentException(
+                    "This operation doesn't support different currencies");
         }
-        return new Amount(a1.getValue().add(a2.getValue().negate()), a1.getCurrency());
+        return new Amount(a1.getValue().add(a2.getValue().negate()),
+                a1.getCurrency());
     }
 
     public static Amount multiply(Amount a, double value) {

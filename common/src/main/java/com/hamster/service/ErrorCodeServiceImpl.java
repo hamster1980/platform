@@ -12,12 +12,12 @@ import com.hamster.repository.ErrorCodeRepository;
 @Transactional
 public class ErrorCodeServiceImpl implements ErrorCodeService {
 
-	@Autowired
-	private ErrorCodeRepository repository;
-	
-	@Override
-	public ErrorCode getByType(ErrorCodeType type) {
-		return repository.findByType(type.toString());
-	}
+    @Autowired
+    private ErrorCodeRepository repository;
+
+    @Override
+    public ErrorCode getByType(ErrorCodeType type) {
+        return repository.findByType(type.toString());
+    }
 
 }

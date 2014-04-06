@@ -5,10 +5,11 @@ import com.hamster.service.ErrorCodeService;
 
 public class Utils {
 
-	private Utils() {
-	}
-	
-	public static void throwErrorCodeException(ErrorCodeService service, ErrorCodeType type) {
-		throw new ErrorCodeException(service.getByType(type));
-	}
+    private Utils() {
+    }
+
+    public static void throwErrorCodeException(ErrorCodeService service,
+            ErrorCodeType type) {
+        throw new ErrorCodeException(service.getByType(type));
+    }
 }

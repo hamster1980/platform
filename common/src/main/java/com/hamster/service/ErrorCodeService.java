@@ -5,6 +5,6 @@ import com.hamster.model.ErrorCodeType;
 
 public interface ErrorCodeService {
 
-	ErrorCode getByType(ErrorCodeType type);
-	
+    ErrorCode getByType(ErrorCodeType type);
+
 }

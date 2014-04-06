@@ -2,7 +2,8 @@ package com.hamster.error;
 
 import org.springframework.context.MessageSourceResolvable;
 
-public class SystemException extends RuntimeException implements MessageSourceResolvable {
+public class SystemException extends RuntimeException implements
+        MessageSourceResolvable {
 
     private static final long serialVersionUID = 1L;
 

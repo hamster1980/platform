@@ -8,6 +8,6 @@ import com.hamster.model.ErrorCode;
 @Repository
 public interface ErrorCodeRepository extends JpaRepository<ErrorCode, Long> {
 
-	ErrorCode findByType(String type);
-	
+    ErrorCode findByType(String type);
+
 }

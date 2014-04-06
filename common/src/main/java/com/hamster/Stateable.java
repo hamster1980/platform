@@ -4,6 +4,6 @@ import com.hamster.model.State;
 
 public interface Stateable {
 
-	State getState();
-	
+    State getState();
+
 }

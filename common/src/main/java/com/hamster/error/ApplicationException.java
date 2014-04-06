@@ -2,7 +2,8 @@ package com.hamster.error;
 
 import org.springframework.context.MessageSourceResolvable;
 
-public class ApplicationException extends RuntimeException implements MessageSourceResolvable {
+public class ApplicationException extends RuntimeException implements
+        MessageSourceResolvable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,7 +33,7 @@ public class ApplicationException extends RuntimeException implements MessageSou
         return "Undefind error. Please write about problem to support service";
     }
 
-    public String getCode(){
+    public String getCode() {
         return "error.undefind";
     }
 
