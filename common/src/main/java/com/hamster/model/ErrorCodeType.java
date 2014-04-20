@@ -1,5 +1,11 @@
 package com.hamster.model;
 
-public interface ErrorCodeType extends Type {
+import java.io.Serializable;
+
+import org.springframework.data.domain.Persistable;
+
+import com.hamster.type.Type;
+
+public interface ErrorCodeType extends Type, Persistable<Serializable> {
 
 }

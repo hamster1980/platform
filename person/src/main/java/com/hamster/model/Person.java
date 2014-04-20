@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import org.springframework.data.domain.Persistable;
 
 import com.google.common.base.Objects;
+import com.hamster.type.Type;
 
 @Entity
 @Table(name = "PERSON")
@@ -92,10 +93,13 @@ public class Person implements Persistable<Long> {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).add("key", key)
-                .add("firstName", firstName).add("secondName", secondName)
+        return Objects.toStringHelper(this)
+                .add("key", key)
+                .add("firstName", firstName)
+                .add("secondName", secondName)
                 .add("lastName", lastName)
-                .add("mainContactType", mainContactType).toString();
+                .add("mainContactType", mainContactType)
+                    .toString();
     }
 
 }

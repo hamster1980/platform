@@ -4,11 +4,12 @@ import java.io.Serializable;
 
 import org.springframework.data.domain.Persistable;
 
-import com.hamster.type.Type;
+import com.hamster.state.State;
 
-public enum PersonContactTypeEnum implements Type, Persistable<Serializable> {
-    EMAIL, 
-    PHONE, 
+public enum AuthStateEnum implements State, Persistable<Serializable> {
+    REGISTERED,
+    ACTIVE,
+    BLOCKED,
     ;
 
     @Override

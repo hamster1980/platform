@@ -2,8 +2,15 @@ package com.hamster.model;
 
 import java.io.Serializable;
 
-public enum PersonContactStateEnum implements State {
-    WAITED, CONFIRMED, REMOVED;
+import org.springframework.data.domain.Persistable;
+
+import com.hamster.state.State;
+
+public enum PersonContactStateEnum implements State, Persistable<Serializable> {
+    WAITED, 
+    CONFIRMED, 
+    REMOVED,
+    ;
 
     @Override
     public Serializable getId() {

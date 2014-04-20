@@ -23,8 +23,7 @@ public abstract class AServiceTestConfig {
 
     @Bean
     public DataSource dataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.H2);
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2);
         for (String script : getScripts()) {
             builder.addScript(script);
         }

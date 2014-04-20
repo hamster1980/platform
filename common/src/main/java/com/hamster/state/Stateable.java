@@ -1,6 +1,5 @@
-package com.hamster;
+package com.hamster.state;
 
-import com.hamster.model.State;
 
 public interface Stateable {
 

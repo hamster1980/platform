@@ -1,6 +1,5 @@
-package com.hamster;
+package com.hamster.type;
 
-import com.hamster.model.Type;
 
 public interface Typeable {
 
