@@ -3,7 +3,6 @@ package com.hamster.service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public abstract class AServiceTest extends AbstractTransactionalJUnit4SpringCont
     }
 
     protected void defaultLogin() {
-        defaultLogin(StringUtils.EMPTY);
+        defaultLogin("ROLE_EMPTY");
     }
     
     protected void defaultLogin(String role) {
