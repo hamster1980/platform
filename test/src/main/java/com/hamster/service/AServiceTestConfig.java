@@ -8,12 +8,14 @@ import org.dbunit.DataSourceDatabaseTester;
 import org.dbunit.util.fileloader.XlsDataFileLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @ImportResource({ "classpath:spring/tx-jpa.xml" })
+@Import({ SecurityTestConfig.class })
 @ComponentScan(basePackages = { "com.hamster.service" })
 @Profile("test")
 public abstract class AServiceTestConfig {

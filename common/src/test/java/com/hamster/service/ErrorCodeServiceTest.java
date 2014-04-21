@@ -29,7 +29,9 @@ public class ErrorCodeServiceTest extends AServiceTest {
     }
 
     private enum Type implements ErrorCodeType {
-        EXISTED, UNEXISTED, ;
+        EXISTED, 
+        UNEXISTED, 
+        ;
         @Override
         public Serializable getId() {
             return Enums.getKey(this);
