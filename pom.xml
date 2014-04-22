@@ -27,6 +27,7 @@
 		<module>common</module>
 		<module>test</module>
 		<module>person</module>
+		<module>confirmation</module>
 	</modules>
 
 	<dependencies>

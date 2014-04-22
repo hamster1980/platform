@@ -11,15 +11,15 @@ public class Auth implements Persistable<Long>{
     private static final long serialVersionUID = 1L;
     
     private final long id;
-    private final Person person;
+    private final Person user;
     private AuthStateEnum state;
     private AuthPassword password;
     private Collection<AuthGrand> grands;
     private Collection<AuthRole> roles;
     
-    public Auth(long id, Person person) {
+    public Auth(long id, Person user) {
         this.id = id;
-        this.person = person;
+        this.user = user;
     }
 
     @Override
@@ -32,8 +32,8 @@ public class Auth implements Persistable<Long>{
         return id == 0;
     }
 
-    public Person getPerson() {
-        return person;
+    public Person getUser() {
+        return user;
     }
 
     public AuthStateEnum getState() {
@@ -82,7 +82,7 @@ public class Auth implements Persistable<Long>{
     public String toString() {
         return Objects.toStringHelper(this)
                 .add("id", id)
-                .add("person", person)
+                .add("user", user)
                 .add("state", state)
                 .add("password", password)
                 .add("grands", grands)

@@ -39,7 +39,7 @@ public abstract class AServiceTest extends AbstractTransactionalJUnit4SpringCont
     
     protected void defaultLogin(String role) {
         Authentication auth = new UsernamePasswordAuthenticationToken("", "", ImmutableList.of(new SimpleGrantedAuthority(role)));
-        SecurityContextHolder.getContext().setAuthentication(auth);//am.authenticate(auth));
+        SecurityContextHolder.getContext().setAuthentication(am.authenticate(auth));
     }
     
 }
