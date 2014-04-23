@@ -7,6 +7,6 @@ public interface ConfirmationService {
 
     Confirmation getConfirmationByCode(String code);
     
-    void send(SendParams params);
+    void create(SendParams params);
     
 }

@@ -1,21 +1,42 @@
 package com.hamster.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Persistable;
 
 import com.google.common.base.Objects;
 import com.hamster.state.Stateable;
 
+@Entity
+@Table(name = "CONFIRMATION")
 public class Confirmation implements Persistable<Long>, Stateable{
 
     private static final long serialVersionUID = 1L;
-    
+
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue
     private final long id;
+    @Column(name = "CONFIRM_CODE")
     private String code;
+    @Column(name = "PERSON_ID")
     private Person user;
+    @Column(name = "CONTACT_ID")
     private PersonContact contact;
+    @Column(name = "ENTITY_ID")
     private long entityId;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATE_ID")
     private ConfirmationStateEnum state;
+    @Column(name = "LAST_SENDING_DATE")
+    @org.hibernate.annotations.Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime lastSendingDate;
     
     public Confirmation() {
