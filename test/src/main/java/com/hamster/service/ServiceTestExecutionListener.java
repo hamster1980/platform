@@ -27,8 +27,7 @@ public class ServiceTestExecutionListener implements TestExecutionListener {
 
     @Override
     public void beforeTestClass(TestContext testContext) throws Exception {
-        DataSets dataSets = testContext.getTestClass().getAnnotation(
-                DataSets.class);
+        DataSets dataSets = testContext.getTestClass().getAnnotation(DataSets.class);
         if (dataSets == null || StringUtils.isEmpty(dataSets.setUpDataSet())) {
             return;
         }
@@ -37,22 +36,17 @@ public class ServiceTestExecutionListener implements TestExecutionListener {
 
     @Override
     public void beforeTestMethod(TestContext testContext) throws Exception {
-        IDataSet dataSet = compositeDataSet(testContext, typeDataSet,
-                testContext.getTestMethod().getAnnotation(DataSets.class));
+        IDataSet dataSet = compositeDataSet(testContext, typeDataSet, testContext.getTestMethod().getAnnotation(DataSets.class));
         if (dataSet == null) {
             return;
         }
-        databaseTester = testContext.getApplicationContext().getBean(
-                AServiceTestConfig.DATABASE_TESTER_BEAN, IDatabaseTester.class);
+        databaseTester = testContext.getApplicationContext().getBean(AServiceTestConfig.DATABASE_TESTER_BEAN, IDatabaseTester.class);
         databaseTester.setDataSet(dataSet);
         databaseTester.onSetup();
     }
 
-    private IDataSet compositeDataSet(TestContext testContext,
-            IDataSet typeDataSet, DataSets methodDataSets)
-            throws DataSetException {
-        if (methodDataSets == null
-                || StringUtils.isEmpty(methodDataSets.setUpDataSet())) {
+    private IDataSet compositeDataSet(TestContext testContext, IDataSet typeDataSet, DataSets methodDataSets) throws DataSetException {
+        if (methodDataSets == null || StringUtils.isEmpty(methodDataSets.setUpDataSet())) {
             return typeDataSet;
         }
         IDataSet methodDataSet = load(testContext, methodDataSets);

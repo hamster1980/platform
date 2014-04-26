@@ -1,5 +1,15 @@
 package com.hamster.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.springframework.data.domain.Persistable;
 
 import com.google.common.base.Objects;
@@ -8,15 +18,28 @@ import com.hamster.state.Stateable;
 import com.hamster.type.Type;
 import com.hamster.type.Typeable;
 
+@Entity
+@Table(name = "PERSON_CONTACT")
 public class PersonContact implements Stateable, Typeable, Persistable<Long> {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue
     private final long key;
-    private Integer personKey;
-    private Type type;
-    private State state;
+    @ManyToOne
+    @JoinColumn(name = "PERSON_ID")
+    private Person person;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "TYPE_ID")
+    private PersonContactTypeEnum type;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATE_ID")
+    private PersonContactStateEnum state;
+    @Column(name = "CONTACT")
     private String value;
+    @Column(name = "MAIN")
     private boolean main;
 
     public PersonContact() {
@@ -37,12 +60,12 @@ public class PersonContact implements Stateable, Typeable, Persistable<Long> {
         return key == 0;
     }
 
-    public Integer getPersonKey() {
-        return personKey;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPersonKey(Integer personKey) {
-        this.personKey = personKey;
+    public void setPersonKey(Person person) {
+        this.person = person;
     }
 
     @Override
@@ -50,7 +73,7 @@ public class PersonContact implements Stateable, Typeable, Persistable<Long> {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(PersonContactTypeEnum type) {
         this.type = type;
     }
 
@@ -59,7 +82,7 @@ public class PersonContact implements Stateable, Typeable, Persistable<Long> {
         return state;
     }
 
-    public void setState(State state) {
+    public void setState(PersonContactStateEnum state) {
         this.state = state;
     }
 
@@ -93,7 +116,7 @@ public class PersonContact implements Stateable, Typeable, Persistable<Long> {
     @Override
     public String toString() {
         return Objects.toStringHelper(this).add("key", key)
-                .add("personKey", personKey).add("type", type)
+                .add("person", person).add("type", type)
                 .add("state", state).add("value", value).add("main", main)
                 .toString();
     }

@@ -6,7 +6,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Persistable;
@@ -26,9 +29,11 @@ public class Confirmation implements Persistable<Long>, Stateable{
     private final long id;
     @Column(name = "CONFIRM_CODE")
     private String code;
-    @Column(name = "PERSON_ID")
+    @ManyToOne
+    @JoinColumn(name = "PERSON_ID")
     private Person user;
-    @Column(name = "CONTACT_ID")
+    @ManyToOne
+    @JoinColumn(name = "CONTACT_ID")
     private PersonContact contact;
     @Column(name = "ENTITY_ID")
     private long entityId;
