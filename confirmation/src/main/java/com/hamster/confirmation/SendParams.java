@@ -9,4 +9,7 @@ public interface SendParams {
     Type getContactType();
     
     long getEntityId();
+    
+    String getTypeName();
+    
 }

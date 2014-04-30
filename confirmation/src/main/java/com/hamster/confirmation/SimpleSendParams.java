@@ -8,11 +8,13 @@ public class SimpleSendParams implements SendParams {
     private final long user;
     private final Type contactType;
     private final long entityId;
+    private final String typeName;
 
-    public SimpleSendParams(long user, Type contactType, long entity) {
+    public SimpleSendParams(long user, Type contactType, long entity, String typeName) {
         this.user = user;
         this.contactType = contactType;
         this.entityId = entity;
+        this.typeName = typeName;
     }
     
     @Override
@@ -31,11 +33,17 @@ public class SimpleSendParams implements SendParams {
     }
 
     @Override
+    public String getTypeName() {
+        return typeName;
+    }
+
+    @Override
     public String toString() {
         return Objects.toStringHelper(this)
                 .add("user", user)
                 .add("contactType", contactType)
                 .add("entityId", entityId)
+                .add("typeName", typeName)
                 .toString();
     }
 

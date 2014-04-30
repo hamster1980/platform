@@ -16,10 +16,11 @@ import org.springframework.data.domain.Persistable;
 
 import com.google.common.base.Objects;
 import com.hamster.state.Stateable;
+import com.hamster.type.Typeable;
 
 @Entity
 @Table(name = "CONFIRMATION")
-public class Confirmation implements Persistable<Long>, Stateable{
+public class Confirmation implements Persistable<Long>, Stateable, Typeable{
 
     private static final long serialVersionUID = 1L;
 
@@ -40,6 +41,8 @@ public class Confirmation implements Persistable<Long>, Stateable{
     @Enumerated(EnumType.STRING)
     @Column(name = "STATE_ID")
     private ConfirmationStateEnum state;
+    @Transient
+    private ConfirmationType type;
     @Column(name = "LAST_SENDING_DATE")
     @org.hibernate.annotations.Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime lastSendingDate;
@@ -102,6 +105,15 @@ public class Confirmation implements Persistable<Long>, Stateable{
     public void setState(ConfirmationStateEnum state) {
         this.state = state;
     }
+    
+    @Override
+    public ConfirmationType getType() {
+        return type;
+    }
+
+    public void setType(ConfirmationType type) {
+        this.type = type;
+    }
 
     public DateTime getLastSendingDate() {
         return lastSendingDate;
@@ -129,6 +141,9 @@ public class Confirmation implements Persistable<Long>, Stateable{
                 .add("entity", entityId)
                 .add("user", user)
                 .add("contact", contact)
+                .add("state", state)
+                .add("type", type)
+                .add("lastSendingDate", lastSendingDate)
                     .toString();
     }
     
