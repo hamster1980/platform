@@ -9,6 +9,9 @@ public class Utils {
     }
 
     public static void throwErrorCodeException(ErrorCodeService service, ErrorCodeType type) {
+        if(type == null) {
+            return;
+        }
         throw new ErrorCodeException(service.getByType(type));
     }
 }

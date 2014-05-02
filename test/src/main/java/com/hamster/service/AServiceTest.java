@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.google.common.collect.ImmutableList;
+import static com.hamster.test.Utils.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners({ ServiceTestExecutionListener.class })
@@ -40,6 +41,15 @@ public abstract class AServiceTest extends AbstractTransactionalJUnit4SpringCont
     protected void defaultLogin(String role) {
         Authentication auth = new UsernamePasswordAuthenticationToken("", "", ImmutableList.of(new SimpleGrantedAuthority(role)));
         SecurityContextHolder.getContext().setAuthentication(am.authenticate(auth));
+    }
+
+    protected void testForUnauthorizedUser(InvocationCallback callback) {
+        invokeWithException(callback);
+    }
+
+    protected void testForUserWithoutGrand(InvocationCallback callback) {
+        defaultLogin();
+        invokeWithException(callback);
     }
     
 }

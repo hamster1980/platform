@@ -2,15 +2,10 @@ package com.hamster.model;
 
 import java.io.Serializable;
 
-import org.springframework.data.domain.Persistable;
-
-import com.hamster.state.State;
-
-public enum ConfirmationStateEnum implements State, Persistable<Serializable> {
-    CREATED,
-    SENT,
-    RESENT,
-    CONFIRMED,
+public enum ConfirmationErrorCodeTypeEnum implements ErrorCodeType {
+    CONFIRMATION_DOES_NOT_EXIST,
+    CONFIRAMTION_TYPE_IS_NOT_CORRECT,
+    CONFIRMATION_STATE_IS_NOT_CORRECT,
     ;
 
     @Override

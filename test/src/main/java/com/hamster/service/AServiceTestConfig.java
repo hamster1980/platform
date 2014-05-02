@@ -16,7 +16,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @ImportResource({ "classpath:spring/tx-jpa.xml" })
 @Import({ SecurityTestConfig.class })
-@ComponentScan(basePackages = { "com.hamster.service" })
+@ComponentScan(basePackages = { "com.hamster" })
 @Profile("test")
 public abstract class AServiceTestConfig {
 
